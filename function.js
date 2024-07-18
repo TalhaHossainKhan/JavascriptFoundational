@@ -10,7 +10,7 @@ function capitalize(String1){
     return String1[0].toUpperCase() 
 }
 
-function lastLetter(String2){
+let lastLetter = (String2) =>{
     return String2[String2.length -1]
 }
 
