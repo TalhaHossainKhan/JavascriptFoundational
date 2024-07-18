@@ -4,18 +4,6 @@ function getRandomInt(Max){
 
 let randGen = getRandomInt(3)
 
-function getComputerChoice(options){
-    if (options == 0){
-        console.log("Rock")
-    } else if (options == 1) {
-        console.log("Paper")
-    } else if (options == 2) {
-        console.log("Scissors")
-    }
-
-    return options
-}
-
 function getHumanChoice(){
     let choice = prompt("What choice do you want to pick ")
     choice = choice.toLowerCase()
@@ -36,56 +24,83 @@ let humanScore = 0
 let computerScore = 0
 
 function playRound(humanChoice, computerChoice){
+    const result = document.createElement("h1")
+    const playerScore = document.createElement("h3")
+    const robotScore = document.createElement("h3")
+    const div = document.createElement("div")
+    const winner = document.createElement("h1")
+
+    div.appendChild(result)
+    div.appendChild(playerScore)
+    div.appendChild(robotScore)
+
+    document.body.appendChild(div)
+    document.body.appendChild(winner)
     
     if (humanChoice === 1 && computerChoice === 0){
-        console.log("Human wins")
+        result.textContent = "Human wins"
         humanScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else if (humanChoice === 0 && computerChoice === 1){
-        console.log("Computer wins")
+        result.textContent = "Computer wins"
         computerScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else if (humanChoice === 1 && computerChoice === 2){
-        console.log("Computer wins")
+        result.textContent = "Computer wins"
         computerScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else if (humanChoice === 2 && computerChoice === 1){
-        console.log("Human wins")
+        result.textContent = "Human wins"
         humanScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else if (humanChoice === 0 && computerChoice === 2){
-        console.log("Human wins")
+        result.textContent = "Human wins"
         humanScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else if (humanChoice === 2 && computerChoice === 0){
-        console.log("Computer wins")
+        result.textContent = "Computer wins"
         computerScore++
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
     } else{
-        console.log("Its a draw")
+        result.textContent = "Its a draw"
+        playerScore.textContent = `Human score is ${humanScore}`
+        robotScore.textContent = `Computer score is ${computerScore}`
+    }
+
+    if (humanScore === 5){
+        winner.textContent = "Human won"
+    } else if (computerScore === 5){
+        winner.textContent = "Computer won"
     }
 
 }
 
 
-function playGame(){
-    let humanSelection = getHumanChoice()
-    let computerSelection = getComputerChoice(randGen)
-    playRound(humanSelection, computerSelection)
+const button1 = document.createElement("button")
+const button2 = document.createElement("button")
+const button3 = document.createElement("button")
 
-    humanSelection = getHumanChoice()
-    computerSelection = getComputerChoice(randGen)
-    playRound(humanSelection, computerSelection)
+button1.addEventListener("click", () =>{
+    playRound(getHumanChoice(), randGen)
+})
 
-    humanSelection = getHumanChoice()
-    computerSelection = getComputerChoice(randGen)
-    playRound(humanSelection, computerSelection)
+button2.addEventListener("click", () =>{
+    playRound(getHumanChoice(), randGen)
+})
 
-    humanSelection = getHumanChoice()
-    computerSelection = getComputerChoice(randGen)
-    playRound(humanSelection, computerSelection)
+button3.addEventListener("click", () =>{
+    playRound(getHumanChoice(), randGen)
+})
 
-    humanSelection = getHumanChoice()
-    computerSelection = getComputerChoice(randGen)
-    playRound(humanSelection, computerSelection)
+document.body.appendChild(button1)
+document.body.appendChild(button2)
+document.body.appendChild(button3)
 
-    console.log(humanScore)
-    console.log(computerScore)
-}
 
-playGame()
 
